@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-teal-primary: #0f4c5c;
+    --color-teal-dark: #0a3641;
+    --color-teal-light: #e6f0f2;
+    --color-offwhite: #f7f9f9;
+    --color-muted-green: #2a9d8f;
+    --color-green-light: #e8f6f4;
+    --color-emergency-red: #e63946;
+    --color-emergency-light: #fde8e9;
+    --color-text-main: #1f2937;
+    --color-text-muted: #6b7280;
+  }
+
+  body {
+    background-color: var(--color-offwhite);
+    color: var(--color-text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: text;
+  }
+}
+
+/* Prevent accidental text selection during button press */
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
