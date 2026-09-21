@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = 'https://silent-sos-backend-7pm9.onrender.com/api';
 
 function getAuthHeaders() {
   const token = localStorage.getItem('silentos_token');
@@ -66,6 +66,7 @@ export const api = {
   },
 
   async logout() {
+    
     return request('/auth/logout', {
       method: 'POST',
     });
