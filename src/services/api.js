@@ -1,4 +1,4 @@
-const API_BASE = 'https://silent-sos-backend-7pm9.onrender.com/api';
+const API_BASE = 'http://localhost:3000/api';
 
 function getAuthHeaders() {
   const token = localStorage.getItem('silentos_token');

@@ -14,10 +14,6 @@ export const config = {
     appPassword: process.env.GMAIL_APP_PASSWORD || '',
     fromName: process.env.GMAIL_FROM_NAME || 'Silent SOS',
 
-
-     // Gmail OAuth 2.0
-    clientId: process.env.GMAIL_CLIENT_ID || '',
-    clientSecret: process.env.GMAIL_CLIENT_SECRET || '',
-    refreshToken: process.env.GMAIL_REFRESH_TOKEN || '',
+    
   },
 };

@@ -47,11 +47,11 @@ export class MockNotificationService {
     try {
       console.log(`[EMAIL] Sending emergency email to ${to}`);
 
-      const result = await sendEmergencyEmail(
+      const result = await sendEmergencyEmail({
         to,
         subject,
         message
-      );
+      });
 
       return {
         success: result?.success ?? true,

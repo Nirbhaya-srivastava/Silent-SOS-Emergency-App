@@ -81,7 +81,11 @@ export const DashboardPage = () => {
             setPermissionDenied(true);
           }
         },
-        { enableHighAccuracy: true, timeout: 5000 }
+        {
+  enableHighAccuracy: false,
+  maximumAge: 10000,
+  timeout: 15000,
+}
       );
     }
 
@@ -177,7 +181,7 @@ export const DashboardPage = () => {
 
   // Helper to obtain immediate location coords or graceful fallback
   const captureImmediateLocation = () => {
-    return new Promise((resolve) => {
+    return new Promise((resolve,reject) => {
       if (currentLocation) {
         return resolve({
           latitude: currentLocation.latitude,
@@ -198,12 +202,16 @@ export const DashboardPage = () => {
             resolve(loc);
           },
           (err) => {
-            console.warn('Geolocation lookup fallback:', err);
-            // Default safe coordinates (San Francisco area) if browser environment denies GPS
-            const fallbackLoc = { latitude: 37.7749, longitude: -122.4194, accuracy: 25 };
-            setCurrentLocation({ ...fallbackLoc, updatedAt: new Date().toISOString() });
-            resolve(fallbackLoc);
-          },
+            console.warn('Geolocation lookup failed:', err);
+            if (err.code === err.PERMISSION_DENIED) {
+              setPermissionDenied(true);
+            }
+            reject(new Error(
+              err.code === err.TIMEOUT
+                ? 'Unable to get your location in time. Please try again.'
+                : 'Unable to get your current location.'
+            ));
+          },  
           { enableHighAccuracy: true, timeout: 4000 }
         );
       } else {

@@ -10,7 +10,7 @@ async function bootstrap() {
   await dbService.init();
 
   const app = express();
-  const PORT = config.port || 5000;
+  const PORT = config.port || 3000;
 
   app.use(helmet());
 
