@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'http://16.112.123.79:3000/api';
 
 function getAuthHeaders() {
   const token = localStorage.getItem('silentos_token');
